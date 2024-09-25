@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Scheduler - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Dashboard</h1>
+            <button id="logoutBtn" class="text-white bg-red-500 px-4 py-2 rounded">Logout</button>
+        </div>
+    </header>
+
+    <!-- Category Selection -->
+    <div class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold mb-6 text-center">Select an Event Category</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Sports Category -->
+            <div class="bg-cover bg-center rounded-lg shadow-lg h-64 flex justify-center items-center cursor-pointer" style="background-image: url('path_to_sports_image.jpg');" onclick="loadEvents('Sports')">
+                <h3 class="text-black text-3xl font-bold">Sports</h3>
+            </div>
+
+            <!-- Exams Category -->
+            <div class="bg-cover bg-center rounded-lg shadow-lg h-64 flex justify-center items-center cursor-pointer" style="background-image: url('path_to_exam_image.jpg');" onclick="loadEvents('Exams')">
+                <h3 class="text-black text-3xl font-bold">Exams</h3>
+            </div>
+
+            <!-- Entertainment Category -->
+            <div class="bg-cover bg-center rounded-lg shadow-lg h-64 flex justify-center items-center cursor-pointer" style="background-image: url('path_to_entertainment_image.jpg');" onclick="loadEvents('Entertainment')">
+                <h3 class="text-black text-3xl font-bold">Entertainment</h3>
+            </div>
+        </div>
+
+        <!-- Event List -->
+        <h2 id="categoryTitle" class="text-2xl font-semibold mb-4 text-center hidden"></h2>
+        <div id="eventContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Events will be loaded here -->
+        </div>
+
+        <!-- Create New Event Button -->
+        <div class="text-center mt-8">
+            <button id="createEventBtn" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Create New Event</button>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 hidden justify-center items-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-1/2">
+            <h4 class="text-2xl font-bold mb-4">Create New Event</h4>
+            <input id="eventTitle" type="text" class="w-full border p-2 mb-4" placeholder="Event Title" />
+            <input id="eventDate" type="date" class="w-full border p-2 mb-4" />
+            <textarea id="eventDescription" class="w-full border p-2 mb-4" rows="3" placeholder="Event Description"></textarea>
+
+            <!-- Category Selector -->
+            <select id="eventCategory" class="w-full border p-2 mb-4">
+                <option value="Sports">Sports</option>
+                <option value="Exams">Exams</option>
+                <option value="Entertainment">Entertainment</option>
+            </select>
+
+            <div class="flex justify-end">
+                <button id="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mr-2">Close</button>
+                <button id="saveEvent" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
